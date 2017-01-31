@@ -14,3 +14,7 @@
 
 # Inherit Carbon common device parts
 $(call inherit-product, device/sony/common/common_carbon.mk)
+
+# aptX HD
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.bt.enableAptXHD=true
