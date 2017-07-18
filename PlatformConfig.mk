@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Platform path
-PLATFORM_COMMON_PATH := device/sony/yoshino
+PLATFORM_COMMON_PATH := device/sony/yoshino-common
 
 TARGET_BOARD_PLATFORM := msm8998
 TARGET_KERNEL_VERSION := 4.4
