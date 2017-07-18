@@ -1,0 +1,8 @@
+[
+  {
+    "remote": "carbon",
+    "repository": "CarbonROM/android_device_sony_common",
+    "target_path": "device/sony/common",
+    "revision": "cr-5.1"
+  }
+]
