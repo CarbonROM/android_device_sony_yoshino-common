@@ -111,6 +111,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # QCOM Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     qcom.bluetooth.soc=cherokee
+    
+# Fluence
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sdk.audio.fluencetype=fluencepro
 
 # aDSP sensors
 ## max rate
