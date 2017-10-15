@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import init.common.rc
+import init.common.srv.rc
 import init.common.usb.rc
 import init.yoshino.pwr.rc
 
@@ -57,11 +58,6 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
-    # Mark the copy complete flag to not completed
-    write /data/misc/radio/copy_complete 0
-    chown radio radio /data/misc/radio/copy_complete
-    chmod 0660 /data/misc/radio/copy_complete
-
     # Socket location for RIDL
     mkdir /dev/socket/RIDL 2770 system system
 
@@ -91,7 +87,7 @@ on boot
     write /dev/cpuset/system-background/cpus 0-1
 
 # OSS WLAN and BT MAC setup
-service macaddrsetup /system/bin/macaddrsetup /data/misc/wifi/wlan_mac.bin
+service macaddrsetup /system/vendor/bin/macaddrsetup /data/misc/wifi/wlan_mac.bin
     class core
     user system
     group system bluetooth
@@ -112,20 +108,20 @@ service wpa_supplicant /system/vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service tftp_server /system/vendor/bin/tftp_server
+service tftp_server /odm/bin/tftp_server
    class core
    user root
 
-service pd_mapper /system/vendor/bin/pd-mapper
+service pd_mapper /odm/bin/pd-mapper
      class core
 
-service start_hci_filter /system/vendor/bin/wcnss_filter
+service start_hci_filter /odm/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth system wakelock
     disabled
 
-service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
+service cnss-daemon /odm/bin/cnss-daemon -n -l
     class late_start
     user system
     group system inet net_admin wifi
