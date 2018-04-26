@@ -68,6 +68,7 @@ PRODUCT_COPY_FILES += \
 
 # Platform specific init
 PRODUCT_PACKAGES += \
+    fstab.yoshino \
     init.yoshino \
     init.yoshino.pwr \
     ueventd

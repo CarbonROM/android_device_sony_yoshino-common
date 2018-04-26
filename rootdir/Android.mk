@@ -1,7 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := fstab.$(TARGET_DEVICE)
+LOCAL_MODULE := fstab.yoshino
 LOCAL_SRC_FILES := vendor/etc/fstab.yoshino
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_STEM := fstab.$(TARGET_DEVICE)
