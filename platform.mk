@@ -92,10 +92,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.msm8998
 
-# Keymaster
-PRODUCT_PACKAGES += \
-    keystore.msm8998
-
 # QCOM Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     qcom.bluetooth.soc=cherokee
@@ -116,8 +112,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qti.sdk.sensors.gestures=false \
     ro.qti.sensors.pedometer=false \
-    ro.qti.sensors.step_detector=false \
-    ro.qti.sensors.step_counter=false \
+    ro.qti.sensors.step_detector=true \
+    ro.qti.sensors.step_counter=true \
     ro.qti.sensors.pam=false \
     ro.qti.sensors.scrn_ortn=false \
     ro.qti.sensors.smd=true \
