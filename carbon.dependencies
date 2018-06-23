@@ -1,0 +1,10 @@
+[
+  {
+    "repository": "CarbonROM/android_device_sony_common-treble",
+    "target_path": "device/sony/common-treble"
+  },
+  {
+    "repository": "CarbonROM/android_kernel_sony_msm8998",
+    "target_path": "kernel/sony/msm8998"
+  }
+]
