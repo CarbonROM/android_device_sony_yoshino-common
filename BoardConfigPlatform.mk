@@ -164,6 +164,10 @@ TARGET_USES_QTI_CAMERA_DEVICE := true
 ### DT2W
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/clearpad/wakeup_gesture"
 
+### IPACFG
+USE_DEVICE_SPECIFIC_IPACFG_MGR := true
+DEVICE_SPECIFIC_IPACFG-MGR_PATH := $(PLATFORM_PATH)/hardware/data-ipa-cfg-mgr
+
 ### WIFI
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HOSTAPD_DRIVER := NL80211
