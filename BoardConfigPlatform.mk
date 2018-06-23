@@ -15,7 +15,7 @@
 
 include device/sony/common-treble/BoardConfigTreble.mk
 
-PLATFORM_PATH := device/sony/yoshino
+PLATFORM_PATH := device/sony/yoshino-common
 
 ### BOARD
 TARGET_BOARD_PLATFORM := msm8998

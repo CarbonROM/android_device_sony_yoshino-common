@@ -16,7 +16,7 @@
 
 $(call inherit-product, device/sony/common-treble/common.mk)
 
-PLATFORM_PATH := device/sony/yoshino
+PLATFORM_PATH := device/sony/yoshino-common
 
 ### PLATFORM INIT
 PRODUCT_PACKAGES += \
