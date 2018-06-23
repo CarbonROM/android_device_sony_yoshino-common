@@ -171,8 +171,8 @@ DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
 TARGET_HW_DISK_ENCRYPTION := true
 
 ### SEPOLICY
-BOARD_SEPOLICY_DIRS += device/sony/yoshino/sepolicy/vendor
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/sony/yoshino/sepolicy/private
+BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(PLATFORM_PATH)/sepolicy/private
 
 ### RECOVERY
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/ramdisk/fstab.recovery
