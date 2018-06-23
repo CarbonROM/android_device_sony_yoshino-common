@@ -229,8 +229,8 @@ USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR := true
 TARGET_HW_DISK_ENCRYPTION := true
 
 ### SEPOLICY
-BOARD_SEPOLICY_DIRS += device/sony/yoshino/sepolicy/vendor
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/sony/yoshino/sepolicy/private
+BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(PLATFORM_PATH)/sepolicy/private
 
 ### RECOVERY
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/ramdisk/fstab.recovery
