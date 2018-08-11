@@ -18,4 +18,14 @@ LOCAL_PATH := $(call my-dir)
 
 ifneq ($(filter lilac poplar maple, $(TARGET_DEVICE)),)
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
+
+KEYMASTER_IMPL_SYMLINK := $(TARGET_OUT_VENDOR)/lib64/android.hardware.keymaster@3.0-impl-qti.so
+$(KEYMASTER_IMPL_SYMLINK): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating keymaster impl symlink: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf hw/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(KEYMASTER_IMPL_SYMLINK)
+
 endif
