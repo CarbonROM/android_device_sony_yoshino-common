@@ -40,11 +40,11 @@ on init
 
 on fs
     # SONY: creat mount point for idd and rca
-    mkdir /idd 0751 idd idd
-    mkdir /rca 0750 idd idd
+    mkdir /idd 0751 vendor_idd vendor_idd
+    mkdir /rca 0750 vendor_idd vendor_idd
 
     # SONY: creat mount point for qns
-    mkdir /qns 0750 qns qns
+    mkdir /qns 0750 vendor_qns vendor_qns
 
     mount_all fstab.${ro.hardware}
 
@@ -58,16 +58,16 @@ on fs
     write /sys/devices/soc/c0a4900.sdhci/mmc_host/mmc0/clkgate_delay 1
 
     # SONY: setup idd and rca partition
-    chown idd idd /idd
+    chown vendor_idd vendor_idd /idd
     chmod 0751 /idd
     exec /system/bin/rm -r /idd/lost+found
     symlink /idd /mnt/idd
-    chown idd idd /rca
+    chown vendor_idd vendor_idd /rca
     chmod 0750 /rca
     exec /system/bin/rm -r /rca/lost+found
 
     # SONY: setup qns partition
-    chown qns qns /qns
+    chown vendor_qns vendor_qns /qns
     chmod 0750 /qns
     restorecon_recursive /qns
 
@@ -145,7 +145,7 @@ on post-fs-data
     mkdir /data/vendor/illumination_service 0770 system system
 
     restorecon -RF /idd
-    mkdir /rca/plugins 0750 idd idd
+    mkdir /rca/plugins 0750 vendor_idd vendor_idd
     restorecon -RF /rca
 
     # ADSP
@@ -153,19 +153,19 @@ on post-fs-data
     chown root audio /sys/kernel/boot_adsp/boot
 
     # QNS
-    chown qns qns /sys/class/qns
-    chown qns qns /sys/class/qns/alarm
-    chown qns qns /sys/class/qns/charge_current
-    chown qns qns /sys/class/qns/charge_voltage
-    chown qns qns /sys/class/qns/charging_state
-    chown qns qns /sys/class/qns/current_now
-    chown qns qns /sys/class/qns/design
-    chown qns qns /sys/class/qns/fcc
-    chown qns qns /sys/class/qns/options
-    chown qns qns /sys/class/qns/soc
-    chown qns qns /sys/class/qns/temp
-    chown qns qns /sys/class/qns/voltage
-    chown qns qns /sys/class/qns/battery_type
+    chown vendor_qns vendor_qns /sys/class/qns
+    chown vendor_qns vendor_qns /sys/class/qns/alarm
+    chown vendor_qns vendor_qns /sys/class/qns/charge_current
+    chown vendor_qns vendor_qns /sys/class/qns/charge_voltage
+    chown vendor_qns vendor_qns /sys/class/qns/charging_state
+    chown vendor_qns vendor_qns /sys/class/qns/current_now
+    chown vendor_qns vendor_qns /sys/class/qns/design
+    chown vendor_qns vendor_qns /sys/class/qns/fcc
+    chown vendor_qns vendor_qns /sys/class/qns/options
+    chown vendor_qns vendor_qns /sys/class/qns/soc
+    chown vendor_qns vendor_qns /sys/class/qns/temp
+    chown vendor_qns vendor_qns /sys/class/qns/voltage
+    chown vendor_qns vendor_qns /sys/class/qns/battery_type
     start qns
 
 on early-boot
@@ -312,8 +312,8 @@ service dpmQmiMgr /vendor/bin/dpmQmiMgr
 # SONY: IDD daemon
 service iddd /vendor/bin/iddd
     class core
-    user idd
-    group idd log inet trimarea
+    user vendor_idd
+    group vendor_idd log inet vendor_trimarea
     writepid /dev/cpuset/system-background/tasks
 
 service cacaoserver /system/bin/cacaoserver
@@ -326,7 +326,7 @@ service cacaoserver /system/bin/cacaoserver
 service modem_switcher /vendor/bin/sony-modem-switcher
     class main
     user root
-    group root system trimarea cache
+    group root system vendor_trimarea cache
     disabled
     oneshot
 
@@ -338,9 +338,9 @@ service hvdcp_opti /vendor/bin/hvdcp_opti
     disabled
 
 service qns /vendor/bin/qns -d /qns -l /qns
-    user qns
-    group qns
-    socket qnsbsd stream 660 qns system
+    user vendor_qns
+    group vendor_qns
+    socket qnsbsd stream 660 vendor_qns system
     disabled
 
 on charger
@@ -349,19 +349,19 @@ on charger
 
     start hvdcp_opti
 
-    chown qns qns /sys/class/qns
-    chown qns qns /sys/class/qns/alarm
-    chown qns qns /sys/class/qns/charge_current
-    chown qns qns /sys/class/qns/charge_voltage
-    chown qns qns /sys/class/qns/charging_state
-    chown qns qns /sys/class/qns/current_now
-    chown qns qns /sys/class/qns/design
-    chown qns qns /sys/class/qns/fcc
-    chown qns qns /sys/class/qns/options
-    chown qns qns /sys/class/qns/soc
-    chown qns qns /sys/class/qns/temp
-    chown qns qns /sys/class/qns/voltage
-    chown qns qns /sys/class/qns/battery_type
+    chown vendor_qns vendor_qns /sys/class/qns
+    chown vendor_qns vendor_qns /sys/class/qns/alarm
+    chown vendor_qns vendor_qns /sys/class/qns/charge_current
+    chown vendor_qns vendor_qns /sys/class/qns/charge_voltage
+    chown vendor_qns vendor_qns /sys/class/qns/charging_state
+    chown vendor_qns vendor_qns /sys/class/qns/current_now
+    chown vendor_qns vendor_qns /sys/class/qns/design
+    chown vendor_qns vendor_qns /sys/class/qns/fcc
+    chown vendor_qns vendor_qns /sys/class/qns/options
+    chown vendor_qns vendor_qns /sys/class/qns/soc
+    chown vendor_qns vendor_qns /sys/class/qns/temp
+    chown vendor_qns vendor_qns /sys/class/qns/voltage
+    chown vendor_qns vendor_qns /sys/class/qns/battery_type
     start qns
 
     setprop sys.usb.configfs 1
