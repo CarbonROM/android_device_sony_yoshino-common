@@ -23,6 +23,9 @@ PRODUCT_PACKAGES += \
     init.yoshino.usb \
     init.yoshino.pwr
 
+PRODUCT_PACKAGES += \
+    kernel_loggy.sh
+
 DEVICE_PACKAGE_OVERLAYS += \
     $(PLATFORM_PATH)/overlay
 
