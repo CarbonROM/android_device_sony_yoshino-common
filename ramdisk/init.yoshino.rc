@@ -343,6 +343,11 @@ service qns /vendor/bin/qns -d /qns -l /qns
     socket qnsbsd stream 660 vendor_qns system
     disabled
 
+service kernel_loggy /system/bin/sh /kernel_loggy.sh
+    class main
+    user root
+    oneshot
+
 on charger
     setprop sys.usb.config mass_storage
     load_system_props
