@@ -52,3 +52,6 @@ endif # WITH_VERITY
 include $(PLATFORM_PATH)/platform/*.mk
 include $(PLATFORM_PATH)/vendor_prop.mk
 endif # WITH_TWRP
+
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
