@@ -51,6 +51,7 @@ using android::init::property_set;
 using namespace std::chrono_literals;
 
 static void load_properties_from_file(const char *, const char *);
+static void property_override(char const prop[], char const value[]);
 
 static void load_properties(char *data, const char *filter)
 {
@@ -91,7 +92,7 @@ static void load_properties(char *data, const char *filter)
                     if (strcmp(key, filter)) continue;
                 }
             }
-            property_set(key, value);
+            property_override(key, value);
         }
     }
 }
@@ -107,6 +108,17 @@ static void load_properties_from_file(const char* filename, const char* filter) 
     load_properties(&data[0], filter);
     LOG(INFO) << "Loaded properties from " << filename << ".";
     return;
+}
+
+void property_override(char const prop[], char const value[])
+{
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
 void vendor_load_properties() {
@@ -140,4 +152,5 @@ void vendor_load_properties() {
     LOG(INFO) << "Loading properties from /ocm/system-properties/config.prop";
     load_properties_from_file("/ocm/system-properties/config.prop", NULL);
 
+    target_load_properties();
 }
