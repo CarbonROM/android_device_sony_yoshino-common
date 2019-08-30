@@ -35,10 +35,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vr.msm8998
 
-# USB TRUST HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-
 # COVER
 PRODUCT_PACKAGES += \
     FlipFlap
