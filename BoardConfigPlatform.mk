@@ -188,11 +188,8 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 # If built into kernel /sys/kernel/boot_wlan/boot_wlan 
 # with 1 and 0 should be used
 WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wlan"
-WIFI_DRIVER_STATE_ON := ON
-WIFI_DRIVER_STATE_OFF := OFF
 WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-WIFI_DRIVER_OPERSTATE_PATH := "/sys/class/net/wlan0/operstate"
 
 ### BLUETOOTH
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth
