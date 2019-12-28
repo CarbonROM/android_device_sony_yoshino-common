@@ -10,6 +10,7 @@
 /mnt/idd/socket(/.*)?                                           u:object_r:idd_socket_file:s0
 /mnt/idd/startup-prober(/.*)?                                   u:object_r:startupprober_file:s0
 /mnt/qns(/.*)?                                                  u:object_r:qns_file:s0
+/oem-modem(/.*)?                                                u:object_r:oemfs:s0
 
 ### CACHE
 /cache/modem(/.*)?                                              u:object_r:modemsw_cache_file:s0
