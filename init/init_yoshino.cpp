@@ -41,17 +41,14 @@
 
 #include "ta.h"
 
+#include "target_init.h"
+
 using android::base::GetProperty;
 using android::base::WaitForProperty;
 using android::base::ReadFileToString;
 using android::init::property_set;
 
 using namespace std::chrono_literals;
-
-__attribute__ ((weak))
-void target_load_properties()
-{
-}
 
 static void load_properties_from_file(const char *, const char *);
 static void property_override(char const prop[], char const value[]);
