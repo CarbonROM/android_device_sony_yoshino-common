@@ -17,3 +17,14 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
+
+include $(CLEAR_VARS)
+# Create mount points for oem configs
+OEM_MOUNT_POINTS := $(TARGET_ROOT_OUT)/oem
+
+ALL_DEFAULT_INSTALLED_MODULES += $(OEM_MOUNT_POINTS)
+
+$(OEM_MOUNT_POINTS):
+	@echo "Creating $(OEM_MOUNT_POINTS) subdirs"
+	@mkdir -p $(TARGET_ROOT_OUT)/oem/modem-config
+	@mkdir -p $(TARGET_ROOT_OUT)/oem/system-properties
