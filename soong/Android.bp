@@ -1,5 +1,4 @@
 //
-// Copyright (C) 2019 The LineageOS Project
 // Copyright (C) 2019 CarbonROM
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,16 +14,20 @@
 // limitations under the License.
 //
 
-sony_yoshino_init_library {
-    name: "libinit.yoshino",
-    recovery_available: true,
-    srcs: [
-        "init_yoshino.cpp",
-        "ta.cpp"
+bootstrap_go_package {
+    name: "soong-sony-yoshino-plugins",
+    pkgPath: "device/sony/yoshino-common",
+    deps: [
+        "blueprint",
+        "blueprint-pathtools",
+        "soong",
+        "soong-android",
+        "soong-cc",
+        "soong-genrule",
     ],
-    include_dirs: [
-        "system/core/base/include",
-        "system/core/init",
-        "external/selinux/libselinux/include"
-    ]
+    srcs: [
+        "init.go",
+        "main.go",
+    ],
+    pluginFor: ["soong_build"],
 }
